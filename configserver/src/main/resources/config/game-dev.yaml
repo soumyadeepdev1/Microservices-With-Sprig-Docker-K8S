@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/business_dev
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 20
+info:
+  name: "Business CRUD"
+  env:
+    name: "DEV"
+  appVersion: "1.0.0"
+  description: "This is a sample application for learning purposes"

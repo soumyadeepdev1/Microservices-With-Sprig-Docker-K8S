@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: evaluation
+  profiles:
+    active: "dev"
+#  config:
+#    import:
+#      - "configserver:http://localhost:8071"
+  jackson:
+    deserialization:
+      accept-empty-string-as-null-object: true
+
+server:
+  port: 8081
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+
+
+  endpoint:
+    shutdown:
+      access: unrestricted
+    env:
+      enabled: true
+      show-values: "ALWAYS"
+    configprops:
+      show-values: "ALWAYS"
+
+  info:
+    env:
+      enabled: true
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+logging:
+  level:
+    com:
+      university:
+        evaluation: DEBUG

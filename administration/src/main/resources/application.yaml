@@ -1,0 +1,85 @@
+spring:
+  application:
+    name: administration
+  profiles:
+    active: "dev"
+#  config:
+#    import:
+#      - "optional:configserver:http://localhost:8071"
+  jackson:
+    deserialization:
+      accept-empty-string-as-null-object: true
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
+server:
+  port:8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+  endpoint:
+    env:
+      enabled: true
+      show-values: "ALWAYS"
+    configprops:
+      show-values: "ALWAYS"
+
+  info:
+    env:
+      enabled: true
+  metrices:
+    tags:
+      application:${spring.application.name}
+
+logging:
+  level:
+    com:
+      university:
+        administration: DEBUG
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 2
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+resilience4j.retry:
+  configs:
+    default:
+      maxAttempts: 4
+      waitDuration: 500
+      enableExponentialBackoff: true
+      exponentialBackoffMultiplier: 2
+      ignoreExceptions:
+        - java.lang.NullPointerException
+      retryExceptions:
+        - java.util.concurrent.TimeoutException
+resilience4j.ratelimiter:
+  configs:
+    default:
+      timeoutDuration: 1000
+      limitRefreshPeriod: 10000
+      limitForPeriod: 1
+
+

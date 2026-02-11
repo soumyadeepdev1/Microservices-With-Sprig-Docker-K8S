@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: configserver
+  profiles:
+#    active: native
+     active: git
+  cloud:
+    config:
+      server:
+#        native:
+#          search-locations: "classpath:/config"
+        git:
+          uri: "git@github.com:Soumyadeep4066/configserver.git"
+          default-label: main
+          timeout: 5
+          force-pull: true
+          clone-on-start: true
+          ignore-local-ssh-settings: true
+
+          private-key: |
+            -----BEGIN OPENSSH PRIVATE KEY-----
+            b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+            QyNTUxOQAAACA+YRP9SbJmB7PWL2V9RBs0EkXWyjbMF05MleUW+xM+cwAAAKCfMOL8nzDi
+            /AAAAAtzc2gtZWQyNTUxOQAAACA+YRP9SbJmB7PWL2V9RBs0EkXWyjbMF05MleUW+xM+cw
+            AAAEDWjGadobLpCpMFsuVso4tV15aRN9KoSdzWB4r5uJPWzz5hE/1JsmYHs9YvZX1EGzQS
+            RdbKNswXTkyV5Rb7Ez5zAAAAGHNvdW15YWRlZXA0MDY2QGdtYWlsLmNvbQECAwQF
+            -----END OPENSSH PRIVATE KEY-----
+            
+  
+
+#  rabbitmq:
+#    host: "localhost"
+#    port: 5672
+#    username: "guest"
+#    password: "guest"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 8071

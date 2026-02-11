@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+info:
+  name: "Business CRUD"
+  env:
+    name: "Local"
+  appVersion: "1.0.0"
+  description: "This is a sample application for learning purposes"
