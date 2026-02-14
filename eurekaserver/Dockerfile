@@ -13,7 +13,7 @@ RUN mvn clean package -B  \
 FROM eclipse-temurin:21-jre-alpine AS runner
 WORKDIR /app
 
- Create a non-root user for security
+# Create a non-root user for security
 RUN addgroup --system --gid 1001 spring && \
     adduser --system --uid 1001 spring
 

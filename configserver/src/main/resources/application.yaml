@@ -10,7 +10,7 @@ spring:
 #        native:
 #          search-locations: "classpath:/config"
         git:
-          uri: "git@github.com:Soumyadeep4066/configserver.git"
+          uri: "git@github.com:soumyadeepdev1/configserver.git"
           default-label: main
           timeout: 5
           force-pull: true

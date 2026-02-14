@@ -3,9 +3,8 @@ spring:
     name: administration
   profiles:
     active: "dev"
-#  config:
-#    import:
-#      - "optional:configserver:http://localhost:8071"
+  config:
+    import: ${SPRING_CONFIG_IMPORT:optional:configserver:http://localhost:8071}
   jackson:
     deserialization:
       accept-empty-string-as-null-object: true
